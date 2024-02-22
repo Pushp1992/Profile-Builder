@@ -1,0 +1,25 @@
+#root {
+  /* max-width: fit-content; */
+  /* max-width: 1280px; */
+  /* margin: 0 auto;
+  padding: 2rem; */
+  /* text-align: center; */
+}
+
+@media screen and (max-width: 767px){
+  .profile-header-container {
+      display: none !important;
+  }
+
+  #navbar-parent {
+    display: none;
+  }
+}
+
+input {
+  border: 0 none transparent;
+}
+
+input:focus{
+  outline: none;
+}
