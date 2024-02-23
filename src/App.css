@@ -16,11 +16,11 @@
   }
 }
 
-input {
+input, textarea {
   border: 0 none transparent;
 }
 
-input:focus{
+input:focus, textarea:focus{
   outline: none;
 }
 
