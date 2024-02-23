@@ -1,4 +1,5 @@
-import React, {Suspense} from 'react';
+import React, {useState, Suspense} from 'react';
+import {MenuPopUpButton} from '../../Components/MenuPopup/MenuPopup';
 
 import Container from "@mui/material/Container";
 
@@ -10,14 +11,33 @@ const ExperienceComponent =  React.lazy(() =>import("../../Components/Section/Ex
 const CTAComponent =  React.lazy(() =>import("../../Components/Section/CTA/CTAComponent"));
 
 const EditPage = () => {
+  const [showSection, setShowSection] = useState({
+    aboutMe: false,
+    skillSet: false,
+    projects: false,
+    experience: false,
+    cta: false,
+  });
+  
   return (
     <Container maxWidth="xl">
       <IntroductionComponent/>
-      <AboutMeComponent />
-      <SkillSetComponent />
-      <ProjectComponent />
-      <ExperienceComponent />
-      <CTAComponent />
+      <Suspense>
+        {showSection.aboutMe && <AboutMeComponent />}
+      </Suspense>
+      <Suspense>
+        {showSection.skillSet && <SkillSetComponent />}
+      </Suspense>
+      <Suspense>
+        {showSection.projects && <ProjectComponent />}
+      </Suspense>
+     <Suspense>
+      {showSection.experience &&  <ExperienceComponent />}
+     </Suspense>
+      <Suspense>
+        {showSection.cta && <CTAComponent />}
+      </Suspense>
+      <MenuPopUpButton showSection={showSection} setShowSection={setShowSection} />
     </Container>
   );
 };
