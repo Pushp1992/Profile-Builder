@@ -24,7 +24,7 @@ const IntroductionComponent = () => {
 
   const uploadPhoto = (event) => {
     event.preventDefault();
-    
+
     const { name } = event.target;
     const file = URL.createObjectURL(event.target.files[0]);
     setIntroSectionData({ ...introSectionData, [name]: file });
@@ -105,7 +105,6 @@ const IntroductionComponent = () => {
           />
         </div>
       </Grid>
-      <button onClick={populateData}>CHECK ALL DATA</button>
     </Grid>
   );
 };
