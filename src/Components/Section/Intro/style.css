@@ -17,6 +17,7 @@
     background: linear-gradient(0deg, #EFEFEF, #EFEFEF);
     border: 1px solid #AEAEAE;
     border-radius: 25px;
+    background-repeat: no-repeat;
 }
 
 .profile-title-subtitle {
