@@ -10,6 +10,8 @@ const ProjectComponent =  React.lazy(() =>import("../../Components/Section/Proje
 const ExperienceComponent =  React.lazy(() =>import("../../Components/Section/Experience/ExperienceComponent"));
 const CTAComponent =  React.lazy(() =>import("../../Components/Section/CTA/CTAComponent"));
 
+import {MenuPopUpContext} from '../context';
+
 const EditPage = () => {
   const [showSection, setShowSection] = useState({
     aboutMe: false,
@@ -37,7 +39,9 @@ const EditPage = () => {
       <Suspense>
         {showSection.cta && <CTAComponent />}
       </Suspense>
-      <MenuPopUpButton showSection={showSection} setShowSection={setShowSection} />
+      <MenuPopUpContext.Provider value={{showSection, setShowSection}}>
+        <MenuPopUpButton />
+      </MenuPopUpContext.Provider>
     </Container>
   );
 };
