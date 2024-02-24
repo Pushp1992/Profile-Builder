@@ -53,7 +53,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export function MenuPopUpButton({showSection, setShowSection}) {
+export function MenuPopUpButton({ showSection, setShowSection }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -64,7 +64,8 @@ export function MenuPopUpButton({showSection, setShowSection}) {
   const handleClose = (event) => {
     event.preventDefault();
     const name = event.target.attributes.name.nodeValue;
-    setShowSection({ ...showSection, [name]: !showSection.name });
+
+    setShowSection({ ...showSection, [name]: !showSection[name] });
     setAnchorEl(null);
   };
 
