@@ -29,7 +29,7 @@ const EditPage = () => {
       <IntroductionComponent />
       <Container fixed spacing={2}>
         <Box className="section-container" sx={{
-               bgcolor: '#cfe8fc', width: 'auto', display: 'flex', flexDirection: 'column',  alignItems: 'center'}} >
+            width: 'auto', display: 'flex', flexDirection: 'column',  alignItems: 'flex-start'}} >
           <Suspense>{showSection.aboutMe && <AboutMeComponent />}</Suspense>
           <Suspense>{showSection.skillSet && <SkillSetComponent />}</Suspense>
           <Suspense>{showSection.projects && <ProjectComponent />}</Suspense>

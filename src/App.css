@@ -29,3 +29,20 @@ input[type="file" i] {
   border: 0 none transparent;
   color: white;
 }
+
+.child-section-container {
+  /* min-width: 500px; */
+  width: -webkit-fill-available;
+  margin-bottom: 2rem !important;
+}
+
+.child-section-actionBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.child-section-container-body {
+  /* min-height: '428px'; */
+  border: solid 1px red;
+  width: inherit;
+}
