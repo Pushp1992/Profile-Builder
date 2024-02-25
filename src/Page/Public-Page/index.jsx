@@ -3,8 +3,10 @@ import {MenuPopUpContext} from '../context';
 
 
 const PublicPage = () => {
-    const {showSection} = useContext(MenuPopUpContext);
-    console.log('public view', showSection);
+    // the value is directly coming from context
+    // but the new context value is not coming
+    const showSection = useContext(MenuPopUpContext);
+    console.log('showSection', showSection);
     return(
         <h3>Public view Page</h3>
     )
