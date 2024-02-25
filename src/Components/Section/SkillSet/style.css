@@ -11,3 +11,12 @@
     min-height: 30vh;
     padding: 2rem;
 }
+
+.skillset-input-field {
+    min-width: 102px;
+    height: 28px;
+    font-size: 16px;
+    line-height: 28px;
+    color: rgba(0, 0, 0, 0.574);
+
+}

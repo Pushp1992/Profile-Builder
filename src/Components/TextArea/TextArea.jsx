@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 export const TextArea = ({
   name,
+  id,
   value,
   rows,
   cols,
@@ -14,6 +15,7 @@ export const TextArea = ({
     <textarea
       wrap="hard"
       name={name}
+      id={id}
       value={value}
       rows={rows}
       cols={cols}
@@ -33,6 +35,7 @@ TextArea.defaultProp = {
 
 TextArea.propTypes = {
   name: PropTypes.string,
+  id: PropTypes.string,
   value: PropTypes.string,
   rows: PropTypes.string,
   cols: PropTypes.string,

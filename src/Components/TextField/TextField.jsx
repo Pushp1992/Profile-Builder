@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 export const TextField = ({
   name,
+  id,
   value,
   onChange,
   placeholder,
@@ -12,6 +13,7 @@ export const TextField = ({
     <input
       type="text"
       name={name}
+      id={id}
       value={value}
       placeholder={placeholder}
       onChange={onChange}
@@ -29,6 +31,7 @@ TextField.defaultProp = {
 
 TextField.propTypes = {
   name: PropTypes.string,
+  id: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
