@@ -20,7 +20,7 @@ export function MenuPopUpButton() {
 
   const handleClose = (event) => {
     event.preventDefault();
-    const name = event.target.attributes.name.nodeValue;
+    const name = event.target?.attributes?.name?.nodeValue;
 
     setShowSection({ ...showSection, [name]: !showSection[name] });
     setAnchorEl(null);
