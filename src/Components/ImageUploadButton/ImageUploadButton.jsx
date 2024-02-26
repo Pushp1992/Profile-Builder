@@ -15,15 +15,21 @@ const VisuallyHiddenInput = styled("input")({
   width: 1,
 });
 
-export const ImageUploadButton = ({ onChange }) => {
+const styles = {
+  justifyContent: 'left',
+};
+
+export const ImageUploadButton = ({ onChange, className }) => {
   return (
     <Button
       component="label"
       variant="outline"
       tabIndex={-1}
+      className="image-btn-left-align"
+      style={styles}
       startIcon={<ImageSearchIcon />}
     >
-      <VisuallyHiddenInput name="logo" type="file" onChange={onChange} />
+      <VisuallyHiddenInput name="logo" type="file" className={className} onChange={onChange} />
     </Button>
   );
 };
@@ -32,4 +38,5 @@ ImageUploadButton.displayName = "ImageUploadButtonComponent";
 
 ImageUploadButton.propTypes = {
   onChange: PropTypes.func,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };
