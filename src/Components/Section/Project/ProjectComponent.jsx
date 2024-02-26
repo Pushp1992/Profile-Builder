@@ -10,9 +10,9 @@ import Stack from "@mui/material/Stack";
 import classNames from "classnames";
 
 import "./style.css";
+import { CardGiftcardRounded, WysiwygSharp } from "@mui/icons-material";
 
 const ProjectComponent = () => {
-  const [projectList, setProjectList] = useState([]);
   const [projectData, setProjectData] = useState({
     text: "Projects",
     subText: "",
@@ -24,13 +24,55 @@ const ProjectComponent = () => {
 
   const handleInputChange = (event) => {
     event.preventDefault();
-    const {name, value} = event.target;
-    setProjectData({...projectData, [name]: value});
+    console.log("*************");
+    const { name, value } = event.target;
+    setProjectData({ ...projectData, [name]: value });
   };
 
   const saveProjectData = (event) => {
     event.preventDefault();
-    console.log(projectData)
+    console.log(projectData);
+  };
+
+  const Card = () => {
+    return (
+      <Grid xs={6} md={6} lg={6}>
+        <div className="project-card">
+          <TextField
+            className="projectData-input-field"
+            name="projectTitle"
+            placeholder="Enter project title"
+            value={projectData.projectTitle}
+            onChange={handleInputChange}
+          />
+          {/* <div> */}
+          <TextField
+            className="projectData-input-field"
+            name="projectLink"
+            placeholder="Add link"
+            value={projectData.projectLink}
+            onChange={handleInputChange}
+          />
+          {/* </div> */}
+          <TextArea
+            className="project"
+            name="projectDesc"
+            placeholder="Add description"
+            value={projectData.projectDesc}
+            onChange={handleInputChange}
+            rows="3"
+            cols="auto"
+          />
+        </div>
+      </Grid>
+    );
+  };
+
+  const [projectList, setProjectList] = useState([Card]);
+
+  const addNewcard = (event) => {
+    event.preventDefault();
+    setProjectList([...projectList, Card]);
   };
 
   return (
@@ -60,37 +102,19 @@ const ProjectComponent = () => {
             cols="auto"
           />
         </Grid>
+
+        {
+        projectList.map((item, index) => {
+            return(
+                <Card key={index} />
+            )
+        })
+        }
+
         <Grid xs={6} md={6} lg={6}>
           <div className="project-card">
-            <TextField
-              className="projectData-input-field"
-              name="projectTitle"
-              placeholder="Enter project title"
-              value={projectData.projectTitle}
-              onChange={handleInputChange}
-            />
-            {/* <div> */}
-            <TextField
-              className="projectData-input-field"
-              name="projectLink"
-              placeholder="Add link"
-              value={projectData.projectLink}
-              onChange={handleInputChange}
-            />
-            {/* </div> */}
-            <TextArea
-              className="project"
-              name="projectDesc"
-              placeholder="Add description"
-              value={projectData.projectDesc}
-              onChange={handleInputChange}
-              rows="3"
-              cols="auto"
-            />
+            <button onClick={addNewcard}>Add more +</button>
           </div>
-        </Grid>
-        <Grid xs={6} md={6} lg={6}>
-          <div className="project-card">card -2</div>
         </Grid>
       </Grid>
     </Grid>
@@ -98,3 +122,7 @@ const ProjectComponent = () => {
 };
 
 export default ProjectComponent;
+
+
+// we have to find out WysiwygSharp,
+// to dynamically add data to the card
