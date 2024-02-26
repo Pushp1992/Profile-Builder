@@ -43,6 +43,7 @@ input[type="file" i] {
 
 .child-section-container-body {
   /* min-height: '428px'; */
-  border: solid 1px red;
+  border: 1.2px solid #828282;
+  border-radius: 16px;
   width: inherit;
 }

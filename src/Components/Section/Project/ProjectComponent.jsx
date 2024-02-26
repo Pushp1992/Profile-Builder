@@ -14,19 +14,27 @@ import { CardGiftcardRounded, WysiwygSharp } from "@mui/icons-material";
 
 const ProjectComponent = () => {
   const data = {
-    text: "Projects",
-    subText: "",
     logo: null,
     projectTitle: "",
     projectLink: "",
     projectDesc: "",
   };
 
+  const [heading, setHeading] = useState({
+    text: "Projects",
+    subText: ''
+  });
+
   const [list, setList] = useState([data]);
 
   const handleInputChange = (event, index) => {
     event.preventDefault();
     const { name, value } = event.target;
+   
+    if (name === 'subText') {
+        setHeading({...heading, [name]: value});
+        return;
+    }
 
     const newList = [...list];
     newList[index][name] = value;
@@ -35,7 +43,9 @@ const ProjectComponent = () => {
 
   const saveProjectData = (event) => {
     event.preventDefault();
-    console.log(list);
+    // payload is coming as an object of keys
+    const result = {...heading, ...list};
+    console.log(result);
   };
 
   const addNewcard = (event) => {
@@ -59,12 +69,12 @@ const ProjectComponent = () => {
         )}
       >
         <Grid xs={12} className="child-section-head">
-          <h4>heading</h4>
+          <h4>{heading.text}</h4>
           <TextArea
             className="project"
             name="subText"
             placeholder="Add subtext here..."
-            value="subheading"
+            value={heading.subText}
             onChange={handleInputChange}
             rows="3"
             cols="auto"
@@ -107,7 +117,14 @@ const ProjectComponent = () => {
 
         <Grid xs={6} md={6} lg={6}>
           <div className="project-card">
-            <button onClick={addNewcard}>Add more +</button>
+          <IconButton
+                aria-label="add"
+                name="addTechStack"
+                onClick={addNewcard}
+              >
+                <AddIcon color="primary" />
+              </IconButton>
+              <div className="project-add-btn">Add new card</div>
           </div>
         </Grid>
       </Grid>

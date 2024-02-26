@@ -1,4 +1,3 @@
-
 .child-section-container-body--project {
     /* display: flex;
     flex-direction: column; */
@@ -12,6 +11,7 @@
     margin: 1rem;
     min-height: 15vh;
     padding: 2rem;
+    justify-content: center;
 }
 
 .projectData-input-field {
@@ -22,4 +22,7 @@
     color: rgba(0, 0, 0, 0.574);
 }
 
-
+.project-add-btn {
+    font-size: small;
+    align-self: center;
+}
