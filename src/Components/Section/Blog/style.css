@@ -1,0 +1,24 @@
+
+.blog-card {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px black;
+    border-radius: 25px;
+    margin: 1rem;
+    min-height: 15vh;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.blogData-input-field {
+    min-width: 102px;
+    height: auto;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, 0.574);
+}
+
+.blog-add-btn {
+    font-size: small;
+    align-self: center;
+}

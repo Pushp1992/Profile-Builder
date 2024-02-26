@@ -63,6 +63,10 @@ export function MenuPopUpButton() {
           <MoreHorizIcon />
           Add Experience
         </MenuItem>
+        <MenuItem name="blog" onClick={handleClose} disableRipple>
+          <MoreHorizIcon />
+          Add Blog
+        </MenuItem>
         <MenuItem name="cta" onClick={handleClose} disableRipple>
           <MoreHorizIcon />
           Add CTA

@@ -9,6 +9,7 @@ const AboutMeComponent =  React.lazy(() =>import("../../Components/Section/About
 const SkillSetComponent =  React.lazy(() =>import("../../Components/Section/SkillSet/SkillSetComponent"));
 const ProjectComponent =  React.lazy(() =>import("../../Components/Section/Project/ProjectComponent"));
 const ExperienceComponent =  React.lazy(() =>import("../../Components/Section/Experience/ExperienceComponent"));
+const BlogComponent =  React.lazy(() =>import("../../Components/Section/Blog/BlogComponent"));
 const CTAComponent =  React.lazy(() =>import("../../Components/Section/CTA/CTAComponent"));
 
 import { MenuPopUpContext } from "../context";
@@ -21,6 +22,7 @@ const EditPage = () => {
     skillSet: false,
     projects: false,
     experience: false,
+    blog: false,
     cta: false,
   });
 
@@ -36,6 +38,7 @@ const EditPage = () => {
           <Suspense>
             {showSection.experience && <ExperienceComponent />}
           </Suspense>
+          <Suspense>{showSection.blog && <BlogComponent />}</Suspense>
           <Suspense>{showSection.cta && <CTAComponent />}</Suspense>
         </Box>
       </Container>
