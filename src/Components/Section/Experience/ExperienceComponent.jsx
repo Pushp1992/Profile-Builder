@@ -17,7 +17,9 @@ const companyComponent = () => {
   const data = {
     logo: null,
     companyTitle: "",
-    companyLink: "",
+    designation: '',
+    companyLocation: '',
+    tenure: "",
     companyDesc: "",
   };
 
@@ -110,9 +112,9 @@ const companyComponent = () => {
                 {/* <div> */}
                 <TextField
                   className="companyData-input-field"
-                  name="companyLink"
-                  placeholder="Add link"
-                  value={companyData.companyLink}
+                  name="tenure"
+                  placeholder="+ Add timeline"
+                  value={companyData.tenure}
                   onChange={(event) => handleInputChange(event, index)}
                 />
                 {/* </div> */}
