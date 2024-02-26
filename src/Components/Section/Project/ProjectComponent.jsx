@@ -2,15 +2,15 @@ import { useState } from "react";
 
 import { TextField } from "../../TextField/TextField";
 import { TextArea } from "../../TextArea/TextArea";
+import { ImageUploadButton } from "../../ImageUploadButton/ImageUploadButton";
 
+import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Unstable_Grid2";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import Stack from "@mui/material/Stack";
 import classNames from "classnames";
 
 import "./style.css";
-import { CardGiftcardRounded, WysiwygSharp } from "@mui/icons-material";
 
 const ProjectComponent = () => {
   const data = {
@@ -22,29 +22,35 @@ const ProjectComponent = () => {
 
   const [heading, setHeading] = useState({
     text: "Projects",
-    subText: ''
+    subText: "",
   });
 
   const [list, setList] = useState([data]);
 
   const handleInputChange = (event, index) => {
     event.preventDefault();
+
+    let logoUrl;
     const { name, value } = event.target;
-   
-    if (name === 'subText') {
-        setHeading({...heading, [name]: value});
-        return;
+
+    if (name === "subText") {
+      setHeading({ ...heading, [name]: value });
+      return;
+    }
+
+    if (name === "logo") {
+      logoUrl = URL.createObjectURL(event.target.files[0]);
     }
 
     const newList = [...list];
-    newList[index][name] = value;
+    newList[index][name] = name !== "logo" ? value : logoUrl;
     setList(newList);
   };
 
   const saveProjectData = (event) => {
     event.preventDefault();
-    // payload is coming as an object of keys
-    const result = {...heading, ...list};
+    // Note: Final payload is coming as an object of keys instead array
+    const result = { ...heading, ...list };
     console.log(result);
   };
 
@@ -85,6 +91,14 @@ const ProjectComponent = () => {
           return (
             <Grid xs={6} md={6} lg={6} key={index}>
               <div className="project-card">
+                {projectData.logo === null ? (
+                  <ImageUploadButton
+                    onChange={(event) => handleInputChange(event, index)}
+                  />
+                ) : (
+                  <Avatar alt="Travis Howard" src={projectData.logo} />
+                )}
+
                 <TextField
                   className="projectData-input-field"
                   name="projectTitle"
@@ -117,14 +131,14 @@ const ProjectComponent = () => {
 
         <Grid xs={6} md={6} lg={6}>
           <div className="project-card">
-          <IconButton
-                aria-label="add"
-                name="addTechStack"
-                onClick={addNewcard}
-              >
-                <AddIcon color="primary" />
-              </IconButton>
-              <div className="project-add-btn">Add new card</div>
+            <IconButton
+              aria-label="add"
+              name="addTechStack"
+              onClick={addNewcard}
+            >
+              <AddIcon color="primary" />
+            </IconButton>
+            <div className="project-add-btn">Add new card</div>
           </div>
         </Grid>
       </Grid>
