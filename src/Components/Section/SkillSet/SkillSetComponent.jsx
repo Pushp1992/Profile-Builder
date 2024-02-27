@@ -84,7 +84,7 @@ const SkillSetComponent = () => {
 
   return (
     <Grid container spacing={2} className="child-section-container">
-      <Grid xs={12} className="child-section-actionBtn">
+      <Grid xs={12} md={12} lg={12} className="child-section-actionBtn">
         <button>cancel</button>
         <button onClick={saveSkillSetInformation}>save</button>
       </Grid>

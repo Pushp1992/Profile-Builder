@@ -33,12 +33,13 @@ input[type="file" i] {
 .child-section-container {
   /* min-width: 500px; */
   width: -webkit-fill-available;
-  margin-bottom: 2rem !important;
+  margin-bottom: 6rem !important;
 }
 
 .child-section-actionBtn {
   display: flex;
   justify-content: end;
+  margin-bottom: 1rem;
 }
 
 .child-section-container-body {
