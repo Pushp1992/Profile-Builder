@@ -93,7 +93,7 @@ const ExperienceComponent = () => {
           return (
             <div className="company-card" key={index}>
               <Grid container className="photo-title-designation">
-                <Grid xs={3} md={3} lg={3}>
+                <Grid xs={4} md={3} lg={3}>
                   {companyData.logo === null ? (
                     <ImageUploadButton
                       onChange={(event) => handleInputChange(event, index)}
@@ -124,8 +124,8 @@ const ExperienceComponent = () => {
                 </Grid>
               </Grid>
 
-              <Grid container className="location-timeline">
-                <Grid xs={3} md={3} lg={3}>
+              <Grid container spacing={3} className="location-timeline">
+                <Grid xs={4} md={3} lg={3}>
                   <TextField
                     className="companyData-input-field"
                     name="companyLocation"
