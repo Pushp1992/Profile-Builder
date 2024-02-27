@@ -65,7 +65,7 @@ const CTAComponent = () => {
             cols="auto"
           />
         </Grid>
-        <Grid xs={3} md={3} lg={3}>
+        <Grid xs={1} md={1} lg={1}>
           {ctaData.logo === null ? (
             <ImageUploadButton onChange={handleInputChange} />
           ) : (
