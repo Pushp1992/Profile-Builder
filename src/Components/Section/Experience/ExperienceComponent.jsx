@@ -12,7 +12,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const companyComponent = () => {
+const ExperienceComponent = () => {
   const data = {
     logo: null,
     companyTitle: "",
@@ -23,7 +23,7 @@ const companyComponent = () => {
   };
 
   const [heading, setHeading] = useState({
-    text: "company",
+    text: "Experience",
     subText: "",
   });
 
@@ -91,39 +91,41 @@ const companyComponent = () => {
 
         {list.map((companyData, index) => {
           return (
-            // <div className="company-cards">
-            <React.Fragment key={index}>
-              <Grid xs={3} md={3} lg={3} className="company-logo">
-                {companyData.logo === null ? (
-                  <ImageUploadButton
-                    onChange={(event) => handleInputChange(event, index)}
-                  />
-                ) : (
-                  <Avatar alt="Travis Howard" src={companyData.logo} />
-                )}
-              </Grid>
-              <Grid xs={6} md={6} lg={6}>
-                <Grid xs={12} md={12} lg={12}>
-                  <TextField
-                    className="companyData-input-field"
-                    name="companyTitle"
-                    placeholder="Enter company title"
-                    value={companyData.companyTitle}
-                    onChange={(event) => handleInputChange(event, index)}
-                  />
+            <div className="company-card" key={index}>
+              <Grid container className="photo-title-designation">
+                <Grid xs={3} md={3} lg={3}>
+                  {companyData.logo === null ? (
+                    <ImageUploadButton
+                      onChange={(event) => handleInputChange(event, index)}
+                    />
+                  ) : (
+                    <Avatar alt="Travis Howard" src={companyData.logo} />
+                  )}
                 </Grid>
-                <Grid xs={12} md={12} lg={12}>
-                  <TextField
-                    className="companyData-input-field"
-                    name="designation"
-                    placeholder="Enter designation"
-                    value={companyData.designation}
-                    onChange={(event) => handleInputChange(event, index)}
-                  />
+                <Grid container>
+                  <Grid xs={12} md={12} lg={12}>
+                    <TextField
+                      className="companyData-input-field"
+                      name="companyTitle"
+                      placeholder="Enter company title"
+                      value={companyData.companyTitle}
+                      onChange={(event) => handleInputChange(event, index)}
+                    />
+                  </Grid>
+                  <Grid xs={12} md={12} lg={12}>
+                    <TextField
+                      className="companyData-input-field"
+                      name="designation"
+                      placeholder="Enter designation"
+                      value={companyData.designation}
+                      onChange={(event) => handleInputChange(event, index)}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
-              <Grid container spacing={1} className="company-location-tenure">
-                <Grid xs={6} md={6} lg={6}>
+
+              <Grid container className="location-timeline">
+                <Grid xs={3} md={3} lg={3}>
                   <TextField
                     className="companyData-input-field"
                     name="companyLocation"
@@ -141,21 +143,19 @@ const companyComponent = () => {
                     onChange={(event) => handleInputChange(event, index)}
                   />
                 </Grid>
+                <Grid xs={12} md={12} lg={12}>
+                  <TextArea
+                    className="company"
+                    name="companyDesc"
+                    placeholder="Add description"
+                    value={companyData.companyDesc}
+                    onChange={(event) => handleInputChange(event, index)}
+                    rows="3"
+                    cols="auto"
+                  />
+                </Grid>
               </Grid>
-
-              <Grid xs={12} md={12} lg={12}>
-                <TextArea
-                  className="company"
-                  name="companyDesc"
-                  placeholder="Add description"
-                  value={companyData.companyDesc}
-                  onChange={(event) => handleInputChange(event, index)}
-                  rows="3"
-                  cols="auto"
-                />
-              </Grid>
-            </React.Fragment>
-        // </div>
+            </div>
           );
         })}
 
@@ -176,4 +176,4 @@ const companyComponent = () => {
   );
 };
 
-export default companyComponent;
+export default ExperienceComponent;

@@ -12,6 +12,7 @@
     min-height: 15vh;
     padding: 2rem;
     justify-content: center;
+    width: inherit;
 }
 
 .companyData-input-field {
