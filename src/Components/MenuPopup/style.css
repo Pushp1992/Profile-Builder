@@ -1,0 +1,9 @@
+.menu-pop-btn {
+    display: flex;
+    justify-content: center;
+    background-color: #EFEFEF;
+    border: 1px solid rgba(0, 0, 0, 0.409);
+    border-radius: 16px;
+    border-style: dashed;
+    margin-bottom: 5rem;
+}

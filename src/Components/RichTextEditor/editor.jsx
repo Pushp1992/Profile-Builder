@@ -77,7 +77,7 @@ const RichTextEditor = () => {
   };
 
   return (
-    <Grid xs={12} sm={12} md={12} className="editorWrappers">
+    <Grid xs={12} sm={12} md={12} className="editorWrapper">
       <LexicalComposer initialConfig={editorConfig}>
         <div className="editor-container">
           <ToolbarPlugin />

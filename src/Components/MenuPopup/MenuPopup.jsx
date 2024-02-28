@@ -9,6 +9,8 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import {StyledMenu} from './StyledMenu';
 import { MenuPopUpContext } from "../../Page/context";
 
+import './style.css';
+
 export function MenuPopUpButton() {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -27,7 +29,7 @@ export function MenuPopUpButton() {
   };
 
   return (
-    <div>
+    <div className="menu-pop-btn">
       <Button
         id="demo-customized-button"
         aria-controls={open ? "demo-customized-menu" : undefined}

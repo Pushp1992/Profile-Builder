@@ -1,3 +1,7 @@
+.parent-container {
+    margin-bottom: 10rem !important;
+}
+
 .site-title {
     min-width: 102px;
     height: 28px;
