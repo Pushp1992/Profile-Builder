@@ -40,6 +40,20 @@ import {
   getCodeLanguages
 } from "@lexical/code";
 
+import UndoIcon from '@mui/icons-material/Undo';
+import RedoIcon from '@mui/icons-material/Redo';
+import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline';
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+import StrikethroughSIcon from '@mui/icons-material/StrikethroughS';
+import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
+import LinkIcon from '@mui/icons-material/Link';
+import CodeIcon from '@mui/icons-material/Code';
+
+import './styles.css';
+
 const LowPriority = 1;
 
 const supportedBlockTypes = new Set([
@@ -54,13 +68,13 @@ const supportedBlockTypes = new Set([
 
 const blockTypeToBlockName = {
   code: "Code Block",
-  h1: "Large Heading",
-  h2: "Small Heading",
-  h3: "Heading",
-  h4: "Heading",
-  h5: "Heading",
+  h1: "H1 Heading",
+  h2: "H2 Heading",
+  h3: "H3 Heading",
+  h4: "H4 Heading",
+  h5: "H5 Heading",
   ol: "Numbered List",
-  paragraph: "Normal",
+  paragraph: <ViewHeadlineIcon fontSize="small" />,
   quote: "Quote",
   ul: "Bulleted List"
 };
@@ -182,6 +196,7 @@ function FloatingLinkEditor({ editor }) {
         <input
           ref={inputRef}
           className="link-input"
+          placeholder="link"
           value={linkUrl}
           onChange={(event) => {
             setLinkUrl(event.target.value);
@@ -304,7 +319,7 @@ function BlockOptionsDropdownList({
     setShowBlockOptionsDropDown(false);
   };
 
-  const formatLargeHeading = () => {
+  const formatH1Heading = () => {
     if (blockType !== "h1") {
       editor.update(() => {
         const selection = $getSelection();
@@ -317,7 +332,7 @@ function BlockOptionsDropdownList({
     setShowBlockOptionsDropDown(false);
   };
 
-  const formatSmallHeading = () => {
+  const formatH2Heading = () => {
     if (blockType !== "h2") {
       editor.update(() => {
         const selection = $getSelection();
@@ -381,14 +396,14 @@ function BlockOptionsDropdownList({
         <span className="text">Normal</span>
         {blockType === "paragraph" && <span className="active" />}
       </button>
-      <button className="item" onClick={formatLargeHeading}>
+      <button className="item" onClick={formatH1Heading}>
         <span className="icon large-heading" />
-        <span className="text">Large Heading</span>
+        <span className="text">Heading 1</span>
         {blockType === "h1" && <span className="active" />}
       </button>
-      <button className="item" onClick={formatSmallHeading}>
+      <button className="item" onClick={formatH2Heading}>
         <span className="icon small-heading" />
-        <span className="text">Small Heading</span>
+        <span className="text">Heading 2</span>
         {blockType === "h2" && <span className="active" />}
       </button>
       <button className="item" onClick={formatBulletList}>
@@ -546,7 +561,8 @@ export default function ToolbarPlugin() {
         className="toolbar-item spaced"
         aria-label="Undo"
       >
-        <i className="format undo" />
+        <i className="format undo" /> 
+        <UndoIcon fontSize="small" />
       </button>
       <button
         disabled={!canRedo}
@@ -557,6 +573,7 @@ export default function ToolbarPlugin() {
         aria-label="Redo"
       >
         <i className="format redo" />
+        <RedoIcon fontSize="small" />
       </button>
       <Divider />
       {supportedBlockTypes.has(blockType) && (
@@ -568,9 +585,7 @@ export default function ToolbarPlugin() {
             }
             aria-label="Formatting Options"
           >
-            <span className={"icon block-type " + blockType} />
             <span className="text">{blockTypeToBlockName[blockType]}</span>
-            <i className="chevron-down" />
           </button>
           {showBlockOptionsDropDown &&
             createPortal(
@@ -594,6 +609,7 @@ export default function ToolbarPlugin() {
             value={codeLanguage}
           />
           <i className="chevron-down inside" />
+          <b>Inside</b>
         </>
       ) : (
         <>
@@ -605,6 +621,7 @@ export default function ToolbarPlugin() {
             aria-label="Format Bold"
           >
             <i className="format bold" />
+            <FormatBoldIcon fontSize="small" />
           </button>
           <button
             onClick={() => {
@@ -614,6 +631,7 @@ export default function ToolbarPlugin() {
             aria-label="Format Italics"
           >
             <i className="format italic" />
+            <FormatItalicIcon fontSize="small" />
           </button>
           <button
             onClick={() => {
@@ -623,6 +641,7 @@ export default function ToolbarPlugin() {
             aria-label="Format Underline"
           >
             <i className="format underline" />
+            <FormatUnderlinedIcon fontSize="small" />
           </button>
           <button
             onClick={() => {
@@ -634,6 +653,7 @@ export default function ToolbarPlugin() {
             aria-label="Format Strikethrough"
           >
             <i className="format strikethrough" />
+            <StrikethroughSIcon fontSize="small" />
           </button>
           <button
             onClick={() => {
@@ -643,6 +663,7 @@ export default function ToolbarPlugin() {
             aria-label="Insert Code"
           >
             <i className="format code" />
+            <CodeIcon fontSize="small" />
           </button>
           <button
             onClick={insertLink}
@@ -650,6 +671,7 @@ export default function ToolbarPlugin() {
             aria-label="Insert Link"
           >
             <i className="format link" />
+            <LinkIcon fontSize='small' />
           </button>
           {isLink &&
             createPortal(<FloatingLinkEditor editor={editor} />, document.body)}
@@ -662,6 +684,7 @@ export default function ToolbarPlugin() {
             aria-label="Left Align"
           >
             <i className="format left-align" />
+            <FormatAlignLeftIcon fontSize="small" />
           </button>
           <button
             onClick={() => {
@@ -671,6 +694,7 @@ export default function ToolbarPlugin() {
             aria-label="Center Align"
           >
             <i className="format center-align" />
+            <FormatAlignCenterIcon fontSize="small" />
           </button>
           <button
             onClick={() => {

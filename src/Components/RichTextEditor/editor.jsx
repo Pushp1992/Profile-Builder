@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import ExampleTheme from "./themes/ExampleTheme";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
@@ -7,7 +8,7 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import TreeViewPlugin from "./plugins/TreeViewPlugin";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import { HeadingNode, QuoteNode } from "@lexical/rich-text";
 import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
@@ -26,114 +27,79 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import "./styles.css";
 
 function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
+  return (
+    <div className="editor-placeholder">Enter Information about you....</div>
+  );
 }
 
 const editorConfig = {
-    // The editor theme
-    theme: ExampleTheme,
-    // Handling of errors during update
-    onError(error) {
-      throw error;
-    },
-    // Any custom nodes go here
-    nodes: [
-      HeadingNode,
-      ListNode,
-      ListItemNode,
-      QuoteNode,
-      CodeNode,
-      CodeHighlightNode,
-      TableNode,
-      TableCellNode,
-      TableRowNode,
-      AutoLinkNode,
-      LinkNode
-    ]
-  };
-
-
-const theme = {
-  heading: {
-    h1: "my-editor-h1",
+  // The editor theme
+  theme: ExampleTheme,
+  // Handling of errors during update
+  onError(error) {
+    throw error;
   },
-  text: {
-    bold: "my-editor-bold",
-    italic: "my-editor-italic",
-  },
+  // Any custom nodes go here
+  nodes: [
+    HeadingNode,
+    ListNode,
+    ListItemNode,
+    QuoteNode,
+    CodeNode,
+    CodeHighlightNode,
+    TableNode,
+    TableCellNode,
+    TableRowNode,
+    AutoLinkNode,
+    LinkNode,
+  ],
 };
 
-// Catch error
-function onError(error) {
-  console.error(error);
-}
-
 const RichTextEditor = () => {
-//   const initialConfig = {
-//     namespace: "MyEditor",
-//     theme,
-//     onError,
-//     nodes: [HeadingNode],
-//   };
+  const [editorState, setEditorState] = useState();
 
-//   const MyOnChangePlugin = ({ onChange }) => {
-//     const [editor] = useLexicalComposerContext();
+  const MyOnChangePlugin = ({ onChange }) => {
+    const [editor] = useLexicalComposerContext();
 
-//     useEffect(() => {
-//       return editor.registerUpdateListener(({ editorState }) => {
-//         onChange(editorState);
-//       });
-//     }, [editor, onChange]);
-//     return null;
-//   };
+    useEffect(() => {
+      return editor.registerUpdateListener(({ editorState }) => {
+        onChange(editorState);
+      });
+    }, [editor, onChange]);
+    return null;
+  };
 
-//   const HeadingPlugin = () => {
-//     const [editor] = useLexicalComposerContext();
-
-//     const onClick = () => {
-//       editor.update(() => {
-//         const selection = $getSelection();
-//         if($isRangeSelection(selection)) {
-//             console.log('************');
-//             $setBlocksType(selection, () => $createHeadingNode('h1'));
-
-//         }
-//       });
-//     };
-//     return <button onClick={onClick}>Heading</button>;
-//   };
-
-//   const onChange = (editorState) => {
-//     // save data to JSON
-//     const editorStateJSON = editorState.toJSON();
-//     // setEditorState(JSON.stringify(editorStateJSON));
-//     // console.log("********", editorStateJSON);
-//   };
-
-//   const [editorState, setEditorState] = useState();
+  const onChange = (editorState) => {
+    // save data to JSON
+    const editorStateJSON = editorState.toJSON();
+    setEditorState(JSON.stringify(editorStateJSON));
+    console.log("********", editorState);
+  };
 
   return (
-    <LexicalComposer initialConfig={editorConfig}>
-    <div className="editor-container">
-      <ToolbarPlugin />
-      <div className="editor-inner">
-        <RichTextPlugin
-          contentEditable={<ContentEditable className="editor-input" />}
-          placeholder={<Placeholder className="placeholder" />}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-        <HistoryPlugin />
-        <TreeViewPlugin />
-        <AutoFocusPlugin />
-        <CodeHighlightPlugin />
-        <ListPlugin />
-        <LinkPlugin />
-        <AutoLinkPlugin />
-        <ListMaxIndentLevelPlugin maxDepth={7} />
-        <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-      </div>
-    </div>
-  </LexicalComposer>
+    <Grid xs={12} sm={12} md={12} className="editorWrappers">
+      <LexicalComposer initialConfig={editorConfig}>
+        <div className="editor-container">
+          <ToolbarPlugin />
+          <div className="editor-inner">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="editor-input" />}
+              placeholder={<Placeholder className="placeholder" />}
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+            <HistoryPlugin />
+            <AutoFocusPlugin />
+            <CodeHighlightPlugin />
+            <ListPlugin />
+            <LinkPlugin />
+            <AutoLinkPlugin />
+            <ListMaxIndentLevelPlugin maxDepth={7} />
+            <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          </div>
+        </div>
+        <MyOnChangePlugin onChange={onChange} />
+      </LexicalComposer>
+    </Grid>
   );
 };
 
