@@ -1,18 +1,58 @@
 import { useState, useEffect } from "react";
 
-import { $getRoot, $createTextNode, $getSelection, $isRangeSelection } from "lexical";
+import ExampleTheme from "./themes/ExampleTheme";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { PlainTextPlugin } from "@lexical/react/LexicalPlainTextPlugin";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
-import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
-import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import LexicalErrorBoundary from "@lexical/react/LexicalErrorBoundary";
-import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
-import { HeadingNode, $createHeadingNode } from "@lexical/rich-text";
-import {$setBlocksType} from '@lexical/selection';
+import TreeViewPlugin from "./plugins/TreeViewPlugin";
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
+import { HeadingNode, QuoteNode } from "@lexical/rich-text";
+import { TableCellNode, TableNode, TableRowNode } from "@lexical/table";
+import { ListItemNode, ListNode } from "@lexical/list";
+import { CodeHighlightNode, CodeNode } from "@lexical/code";
+import { AutoLinkNode, LinkNode } from "@lexical/link";
+import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
+import { ListPlugin } from "@lexical/react/LexicalListPlugin";
+import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPlugin";
+import { TRANSFORMERS } from "@lexical/markdown";
+
+import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
+import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
+import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 
 import "./styles.css";
+
+function Placeholder() {
+  return <div className="editor-placeholder">Enter some rich text...</div>;
+}
+
+const editorConfig = {
+    // The editor theme
+    theme: ExampleTheme,
+    // Handling of errors during update
+    onError(error) {
+      throw error;
+    },
+    // Any custom nodes go here
+    nodes: [
+      HeadingNode,
+      ListNode,
+      ListItemNode,
+      QuoteNode,
+      CodeNode,
+      CodeHighlightNode,
+      TableNode,
+      TableCellNode,
+      TableRowNode,
+      AutoLinkNode,
+      LinkNode
+    ]
+  };
+
+
 const theme = {
   heading: {
     h1: "my-editor-h1",
@@ -29,60 +69,71 @@ function onError(error) {
 }
 
 const RichTextEditor = () => {
-  const initialConfig = {
-    namespace: "MyEditor",
-    theme,
-    onError,
-    nodes: [HeadingNode],
-  };
+//   const initialConfig = {
+//     namespace: "MyEditor",
+//     theme,
+//     onError,
+//     nodes: [HeadingNode],
+//   };
 
-  const MyOnChangePlugin = ({ onChange }) => {
-    const [editor] = useLexicalComposerContext();
+//   const MyOnChangePlugin = ({ onChange }) => {
+//     const [editor] = useLexicalComposerContext();
 
-    useEffect(() => {
-      return editor.registerUpdateListener(({ editorState }) => {
-        onChange(editorState);
-      });
-    }, [editor, onChange]);
-    return null;
-  };
+//     useEffect(() => {
+//       return editor.registerUpdateListener(({ editorState }) => {
+//         onChange(editorState);
+//       });
+//     }, [editor, onChange]);
+//     return null;
+//   };
 
-  const HeadingPlugin = () => {
-    const [editor] = useLexicalComposerContext();
+//   const HeadingPlugin = () => {
+//     const [editor] = useLexicalComposerContext();
 
-    const onClick = () => {
-      editor.update(() => {
-        const selection = $getSelection();
-        if($isRangeSelection(selection)) {
-            console.log('************');
-            $setBlocksType(selection, () => $createHeadingNode('h1'));
+//     const onClick = () => {
+//       editor.update(() => {
+//         const selection = $getSelection();
+//         if($isRangeSelection(selection)) {
+//             console.log('************');
+//             $setBlocksType(selection, () => $createHeadingNode('h1'));
 
-        }
-      });
-    };
-    return <button onClick={onClick}>Heading</button>;
-  };
+//         }
+//       });
+//     };
+//     return <button onClick={onClick}>Heading</button>;
+//   };
 
-  const onChange = (editorState) => {
-    // save data to JSON
-    const editorStateJSON = editorState.toJSON();
-    // setEditorState(JSON.stringify(editorStateJSON));
-    // console.log("********", editorStateJSON);
-  };
+//   const onChange = (editorState) => {
+//     // save data to JSON
+//     const editorStateJSON = editorState.toJSON();
+//     // setEditorState(JSON.stringify(editorStateJSON));
+//     // console.log("********", editorStateJSON);
+//   };
 
-  const [editorState, setEditorState] = useState();
+//   const [editorState, setEditorState] = useState();
 
   return (
-    <LexicalComposer initialConfig={initialConfig}>
-      <HeadingPlugin />
-      <PlainTextPlugin
-        contentEditable={<ContentEditable className="contentEditable" />}
-        placeholder={<div className="placeholder">Enter some text...</div>}
-        ErrorBoundary={LexicalErrorBoundary}
-      />
-      <HistoryPlugin />
-      <MyOnChangePlugin onChange={onChange} />
-    </LexicalComposer>
+    <LexicalComposer initialConfig={editorConfig}>
+    <div className="editor-container">
+      <ToolbarPlugin />
+      <div className="editor-inner">
+        <RichTextPlugin
+          contentEditable={<ContentEditable className="editor-input" />}
+          placeholder={<Placeholder className="placeholder" />}
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+        <HistoryPlugin />
+        <TreeViewPlugin />
+        <AutoFocusPlugin />
+        <CodeHighlightPlugin />
+        <ListPlugin />
+        <LinkPlugin />
+        <AutoLinkPlugin />
+        <ListMaxIndentLevelPlugin maxDepth={7} />
+        <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+      </div>
+    </div>
+  </LexicalComposer>
   );
 };
 
