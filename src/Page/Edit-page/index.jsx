@@ -14,7 +14,7 @@ const CTAComponent =  React.lazy(() =>import("../../Components/Section/CTA/CTACo
 
 import { MenuPopUpContext } from "../context";
 
-import './style.css';
+import "./style.css";
 
 const EditPage = () => {
   const [showSection, setShowSection] = useState({
@@ -30,8 +30,15 @@ const EditPage = () => {
     <Container maxWidth="xl">
       <IntroductionComponent />
       <Container fixed spacing={2}>
-        <Box className="section-container" sx={{
-            width: 'auto', display: 'flex', flexDirection: 'column',  alignItems: 'flex-start'}} >
+        <Box
+          className="section-container"
+          sx={{
+            width: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+        >
           <Suspense>{showSection.aboutMe && <AboutMeComponent />}</Suspense>
           <Suspense>{showSection.skillSet && <SkillSetComponent />}</Suspense>
           <Suspense>{showSection.projects && <ProjectComponent />}</Suspense>
@@ -41,11 +48,10 @@ const EditPage = () => {
           <Suspense>{showSection.blog && <BlogComponent />}</Suspense>
           <Suspense>{showSection.cta && <CTAComponent />}</Suspense>
         </Box>
+        <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
+          <MenuPopUpButton />
+        </MenuPopUpContext.Provider>
       </Container>
-
-      <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
-        <MenuPopUpButton />
-      </MenuPopUpContext.Provider>
     </Container>
   );
 };
