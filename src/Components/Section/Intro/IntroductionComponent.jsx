@@ -1,20 +1,13 @@
 import Grid from "@mui/material/Unstable_Grid2";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { TextField } from "../../TextField/TextField";
 import { TextArea } from "../../TextArea/TextArea";
+import { MenuPopUpContext, IntroductionComponentContext } from "../../../Page/context";
 
 import "./style.css";
 
-const IntroductionComponent = () => {
-  const [introSectionData, setIntroSectionData] = useState({
-    siteTitle: "",
-    profilePhoto: null,
-    profileTitle: "",
-    profileSubTitle: "",
-    profileName: "",
-    profileEmail: "",
-  });
+const IntroductionComponent = ({introSectionData, setIntroSectionData}) => {
 
   const handleInputChange = (event) => {
     event.stopPropagation();

@@ -15,7 +15,7 @@ const CTAComponent =  React.lazy(() => import("../../Components/Section/CTA/CTAC
 const ModalBox = React.lazy(() => import('../../Components/Modal-Box/Modal'));
 
 
-import { MenuPopUpContext } from "../context";
+import { MenuPopUpContext, IntroductionComponentContext } from "../context";
 
 import "./style.css";
 
@@ -29,9 +29,18 @@ const EditPage = () => {
     cta: false,
   });
 
+  const [introSectionData, setIntroSectionData] = useState({
+    siteTitle: "",
+    profilePhoto: null,
+    profileTitle: "",
+    profileSubTitle: "",
+    profileName: "",
+    profileEmail: "",
+  });
+
   return (
     <Container maxWidth="xl">
-      <IntroductionComponent />
+      <IntroductionComponent {...{introSectionData, setIntroSectionData}} />
       <Container fixed spacing={2}>
         <Box
           className="section-container"
@@ -54,7 +63,7 @@ const EditPage = () => {
         <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
           <MenuPopUpButton />
         </MenuPopUpContext.Provider>
-        <ModalBox />
+        <ModalBox {...{introSectionData}} />
       </Container>
     </Container>
   );

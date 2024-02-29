@@ -1,5 +1,7 @@
 import { createContext } from "react";
 
 const MenuPopUpContext = createContext({});
+const IntroductionComponentContext = createContext({});
+const ModalBoxContext = createContext({});
 
-export { MenuPopUpContext };
+export { MenuPopUpContext, IntroductionComponentContext, ModalBoxContext };
