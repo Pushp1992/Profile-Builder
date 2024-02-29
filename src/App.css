@@ -1,7 +1,6 @@
-
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
   .profile-header-container {
-      display: none !important;
+    display: none !important;
   }
 
   #navbar-parent {
@@ -13,11 +12,11 @@ input, textarea {
   border: 0 none transparent;
 }
 
-input:focus, textarea:focus{
+input:focus, textarea:focus {
   outline: none;
 }
 
-input[type="file" i] {
+input[type="file"i] {
   /* display: none; */
   border: 0 none transparent;
   color: white;
@@ -35,9 +34,28 @@ input[type="file" i] {
   margin-bottom: 1rem;
 }
 
+.child-section-actionBtn--cancel {
+  color: black !important;
+}
+
+.child-section-actionBtn--save {
+  min-width: 70px !important;
+}
+
 .child-section-container-body {
   /* min-height: '428px'; */
   border: 1.2px solid #828282;
   border-radius: 16px;
   width: inherit;
+}
+
+Button {
+  /* color: white !important; */
+  text-transform: none !important;
+  border-radius: 10px !important;
+}
+
+a:-webkit-any-link {
+  color: white;
+  text-decoration: none;
 }

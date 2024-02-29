@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { TextField } from "../../TextField/TextField";
 import { TextArea } from "../../TextArea/TextArea";
-
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Unstable_Grid2";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -85,8 +85,17 @@ const SkillSetComponent = () => {
   return (
     <Grid container spacing={2} className="child-section-container">
       <Grid xs={12} md={12} lg={12} className="child-section-actionBtn">
-        <button>cancel</button>
-        <button onClick={saveSkillSetInformation}>save</button>
+        <Button variant="text" className="child-section-actionBtn--cancel">
+          cancel
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          className="child-section-actionBtn--save"
+          onClick={saveSkillSetInformation}
+        >
+          save
+        </Button>
       </Grid>
       <div
         className={classNames(

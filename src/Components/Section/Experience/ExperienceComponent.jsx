@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { TextField } from "../../TextField/TextField";
 import { TextArea } from "../../TextArea/TextArea";
+import Button from "@mui/material/Button";
 import { ImageUploadButton } from "../../ImageUploadButton/ImageUploadButton";
 
 import Avatar from "@mui/material/Avatar";
@@ -64,8 +65,17 @@ const ExperienceComponent = () => {
   return (
     <Grid container spacing={2} className="child-section-container">
       <Grid xs={12} md={12} lg={12} className="child-section-actionBtn">
-        <button>cancel</button>
-        <button onClick={saveCompanyData}>save</button>
+      <Button variant="text" className="child-section-actionBtn--cancel">
+          cancel
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          className="child-section-actionBtn--save"
+          onClick={saveCompanyData}
+        >
+          save
+        </Button>
       </Grid>
 
       <Grid

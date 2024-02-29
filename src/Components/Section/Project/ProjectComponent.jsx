@@ -3,7 +3,7 @@ import { useState } from "react";
 import { TextField } from "../../TextField/TextField";
 import { TextArea } from "../../TextArea/TextArea";
 import { ImageUploadButton } from "../../ImageUploadButton/ImageUploadButton";
-
+import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Unstable_Grid2";
 import IconButton from "@mui/material/IconButton";
@@ -62,8 +62,17 @@ const ProjectComponent = () => {
   return (
     <Grid container spacing={2} className="child-section-container">
       <Grid xs={12} className="child-section-actionBtn">
-        <button>cancel</button>
-        <button onClick={saveProjectData}>save</button>
+        <Button variant="text" className="child-section-actionBtn--cancel">
+          cancel
+        </Button>
+        <Button
+          variant="contained"
+          size="small"
+          className="child-section-actionBtn--save"
+          onClick={saveProjectData}
+        >
+          save
+        </Button>
       </Grid>
 
       <Grid
@@ -106,7 +115,6 @@ const ProjectComponent = () => {
                   value={projectData.projectTitle}
                   onChange={(event) => handleInputChange(event, index)}
                 />
-                {/* <div> */}
                 <TextField
                   className="projectData-input-field"
                   name="projectLink"
@@ -114,7 +122,6 @@ const ProjectComponent = () => {
                   value={projectData.projectLink}
                   onChange={(event) => handleInputChange(event, index)}
                 />
-                {/* </div> */}
                 <TextArea
                   className="project"
                   name="projectDesc"

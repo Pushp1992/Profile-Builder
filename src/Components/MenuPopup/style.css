@@ -7,3 +7,7 @@
     border-style: dashed;
     margin-bottom: 5rem;
 }
+
+#demo-customized-button {
+    color: black !important;
+}

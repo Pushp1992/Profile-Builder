@@ -2,6 +2,9 @@
 .profile-header-container {
     color: white;
     background-color: black;
+    justify-content: normal;
+    align-items: center;
+    padding-left: 1rem;
 }
 
 .right-menu {
@@ -11,4 +14,9 @@
 
 .left-menu-btn {
     margin-right: 1rem !important;
+    align-items: center;
+}
+
+.preview-page-btn {
+    color: white !important;
 }

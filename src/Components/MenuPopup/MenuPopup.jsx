@@ -1,10 +1,14 @@
 import React, { useState, useContext } from "react";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-import EditIcon from "@mui/icons-material/Edit";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+
+import FaceIcon from '@mui/icons-material/Face';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import HubIcon from '@mui/icons-material/Hub';
+import SchoolIcon from '@mui/icons-material/School';
+import RssFeedIcon from '@mui/icons-material/RssFeed';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import AddIcon from '@mui/icons-material/Add';
 
 import {StyledMenu} from './StyledMenu';
 import { MenuPopUpContext } from "../../Page/context";
@@ -32,12 +36,14 @@ export function MenuPopUpButton() {
     <div className="menu-pop-btn">
       <Button
         id="demo-customized-button"
+        variant="text"
         aria-controls={open ? "demo-customized-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
         disableElevation
         onClick={handleClick}
       >
+        <AddIcon fontSize="small" />
         Click to add sections
       </Button>
       <StyledMenu
@@ -50,27 +56,27 @@ export function MenuPopUpButton() {
         onClose={handleClose}
       >
         <MenuItem name="aboutMe" onClick={handleClose} disableRipple>
-          <EditIcon />
+          <FaceIcon  />
           Add About You
         </MenuItem>
         <MenuItem name="skillSet" onClick={handleClose} disableRipple>
-          <FileCopyIcon />
+          <MilitaryTechIcon />
           Add Skillsets
         </MenuItem>
         <MenuItem name="projects" onClick={handleClose} disableRipple>
-          <ArchiveIcon />
+          <HubIcon />
           Add Projects
         </MenuItem>
         <MenuItem name="experience" onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
+          <SchoolIcon />
           Add Experience
         </MenuItem>
         <MenuItem name="blog" onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
+          <RssFeedIcon />
           Add Blog
         </MenuItem>
         <MenuItem name="cta" onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
+          <DashboardIcon />
           Add CTA
         </MenuItem>
       </StyledMenu>
