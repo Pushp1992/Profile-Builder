@@ -3,3 +3,12 @@
     color: white;
     background-color: black;
 }
+
+.right-menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-menu-btn {
+    margin-right: 1rem !important;
+}

@@ -19,7 +19,7 @@ export const ProfileHeader = () => {
         </Grid>
       </Grid>
       <Grid xs={4} md={4} lg={4} xl={4} className="right-menu">
-        <Grid container spacing={3}>
+        <Grid container spacing={3} className="left-menu-btn">
           <Grid xs={2}>
             <Button color="secondary">Preview</Button>
           </Grid>
