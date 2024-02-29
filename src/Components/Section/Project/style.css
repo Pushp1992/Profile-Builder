@@ -12,6 +12,7 @@
     min-height: 15vh;
     padding: 2rem;
     justify-content: center;
+    background-color: #FFFFFF;
 }
 
 .projectData-input-field {
@@ -25,4 +26,8 @@
 .project-add-btn {
     font-size: small;
     align-self: center;
+}
+
+.project-subtext {
+    background-color: whitesmoke;
 }

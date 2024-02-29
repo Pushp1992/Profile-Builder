@@ -13,6 +13,7 @@
     padding: 2rem;
     justify-content: center;
     width: inherit;
+    background-color: #FFFFFF;
 }
 
 .companyData-input-field {
@@ -41,4 +42,8 @@
 
 .btn-text {
     font-size: medium;
+}
+
+.company-subtext {
+    background-color: whitesmoke;
 }

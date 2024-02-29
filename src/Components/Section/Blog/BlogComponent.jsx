@@ -86,7 +86,7 @@ const BlogComponent = () => {
         <Grid xs={12} className="child-section-head">
           <h4>{heading.text}</h4>
           <TextArea
-            className="blog"
+            className="blog-textarea"
             name="subText"
             placeholder="Add subtext here..."
             value={heading.subText}

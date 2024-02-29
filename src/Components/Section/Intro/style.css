@@ -1,5 +1,6 @@
 .parent-container {
     margin-bottom: 10rem !important;
+    background-color: whitesmoke;
 }
 
 .site-title {
@@ -57,17 +58,21 @@
 }
 
 .profile-name {
-    min-width:117px;
+    min-width: 117px;
     height: 19px;
     font-size: 16px;
     line-height: 19px;
 }
 
 .profile-email {
-    min-width:71px;
+    min-width: 71px;
     height: 17px;
     font-size: 14px;
     line-height: 17px;
+}
+
+.site-title, .profile-title, .profile-subtitle, .profile-name, .profile-email {
+    background-color: whitesmoke;
 }
 
 @media screen and (max-width:426px) {
@@ -93,11 +98,13 @@
         width: 312px;
         height: 224px;
     }
+
     .profile-title {
         font-size: 30px;
         line-height: 44px;
     }
-    .profile-subtitle { 
+
+    .profile-subtitle {
         font-size: 15px;
         line-height: 22px;
     }

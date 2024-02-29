@@ -1,7 +1,3 @@
-.child-section-container-body--project {
-    /* display: flex;
-    flex-direction: column; */
-}
 
 .company-card {
     display: flex;
@@ -41,4 +37,8 @@
 
 .btn-text {
     font-size: medium;
+}
+
+.blogURL-input-textarea, .blogURL-input-field {
+    background-color: whitesmoke;
 }

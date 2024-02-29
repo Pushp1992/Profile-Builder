@@ -8,6 +8,7 @@
     min-height: 15vh;
     padding: 2rem;
     justify-content: center;
+    background-color: #FFFFFF;
 }
 
 .blogData-input-field {
@@ -21,4 +22,8 @@
 .blog-add-btn {
     font-size: small;
     align-self: center;
+}
+
+.blog-textarea {
+    background-color: whitesmoke;
 }

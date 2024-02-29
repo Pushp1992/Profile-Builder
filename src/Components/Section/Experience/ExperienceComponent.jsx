@@ -89,7 +89,7 @@ const ExperienceComponent = () => {
         <Grid xs={12} className="child-section-head">
           <h4>{heading.text}</h4>
           <TextArea
-            className="company"
+            className="company-subtext"
             name="subText"
             placeholder="Add subtext here..."
             value={heading.subText}

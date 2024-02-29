@@ -66,7 +66,7 @@ const CTAComponent = () => {
         </Grid>
         <Grid xs={12} md={12} lg={12}>
           <TextArea
-            className="company"
+            className="blogURL-input-textarea"
             name="subText"
             placeholder="Add subtext here..."
             value={ctaData.subText}
