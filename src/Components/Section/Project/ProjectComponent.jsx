@@ -12,20 +12,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const ProjectComponent = () => {
-  const data = {
-    logo: null,
-    projectTitle: "",
-    projectLink: "",
-    projectDesc: "",
-  };
-
-  const [heading, setHeading] = useState({
-    text: "Projects",
-    subText: "",
-  });
-
-  const [list, setList] = useState([data]);
+const ProjectComponent = ({data, heading, setHeading, list, setList}) => {
 
   const handleInputChange = (event, index) => {
     event.preventDefault();

@@ -8,10 +8,11 @@ import Modal from "react-bootstrap/Modal";
 const AboutMeComponent = React.lazy(() => import("../../Components/Section/AboutMe/AboutMeComponent"));
 const IntroductionComponent = React.lazy(() => import("../../Components/Section/Intro/IntroductionComponent"));
 const SkillSetComponent =  React.lazy(() => import("../../Components/Section/SkillSet/SkillSetComponent"));
+const ProjectComponent =  React.lazy(() => import("../../Components/Section/Project/ProjectComponent"));
 
 import "./style.css";
 
-const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData }) => {
+const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData, data, heading, list }) => {
   const [lgShow, setLgShow] = useState(false);
 
   return (
@@ -41,6 +42,9 @@ const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData }) =
                 </Suspense>
                 <Suspense>
                     <SkillSetComponent {...{skill, techStack, skillSetSectionData}} />
+                </Suspense>
+                <Suspense>
+                  <ProjectComponent {...{data, heading, list}} />
                 </Suspense>
               </Box>
             </Container>

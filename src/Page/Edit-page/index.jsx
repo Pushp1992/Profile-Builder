@@ -54,6 +54,21 @@ const EditPage = () => {
     },
   });
 
+  const data = {
+    logo: null,
+    projectTitle: "",
+    projectLink: "",
+    projectDesc: "",
+  };
+
+  const [heading, setHeading] = useState({
+    text: "Projects",
+    subText: "",
+  });
+
+  const [list, setList] = useState([data]);
+
+
   return (
     <Container maxWidth="xl">
       <IntroductionComponent {...{introSectionData, setIntroSectionData}} />
@@ -69,7 +84,7 @@ const EditPage = () => {
         >
           <Suspense>{showSection.aboutMe && <AboutMeComponent />}</Suspense>
           <Suspense>{showSection.skillSet && <SkillSetComponent {...{skill, setSkill, techStack, setTechStack, skillSetSectionData, setSkillSetSectionData}} />}</Suspense>
-          <Suspense>{showSection.projects && <ProjectComponent />}</Suspense>
+          <Suspense>{showSection.projects && <ProjectComponent {...{data, heading, setHeading, list, setList}} />}</Suspense>
           <Suspense>
             {showSection.experience && <ExperienceComponent />}
           </Suspense>
@@ -79,7 +94,7 @@ const EditPage = () => {
         <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
           <MenuPopUpButton />
         </MenuPopUpContext.Provider>
-        <ModalBox {...{introSectionData, skill, techStack, skillSetSectionData}} />
+        <ModalBox {...{introSectionData, skill, techStack, skillSetSectionData, data, heading, list}} />
       </Container>
     </Container>
   );
