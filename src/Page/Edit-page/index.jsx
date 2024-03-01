@@ -14,7 +14,6 @@ const BlogComponent =  React.lazy(() => import("../../Components/Section/Blog/Bl
 const CTAComponent =  React.lazy(() => import("../../Components/Section/CTA/CTAComponent"));
 const ModalBox = React.lazy(() => import('../../Components/Modal-Box/Modal'));
 
-
 import { MenuPopUpContext, IntroductionComponentContext } from "../context";
 
 import "./style.css";
@@ -68,10 +67,40 @@ const EditPage = () => {
 
   const [list, setList] = useState([data]);
 
+  // Experience section data
+  const companyData = {
+    logo: null,
+    companyTitle: "",
+    designation: "",
+    companyLocation: "",
+    tenure: "",
+    companyDesc: "",
+  };
+
+  const [companyHeading, setCompanyHeading] = useState({
+    text: "Experience",
+    subText: "",
+  });
+
+  const [companyList, setCompanyList] = useState([companyData]);
+
+  // Blog section data
+  const blogData = {
+    logo: null,
+    blogTitle: "",
+    blogLink: "",
+  };
+
+  const [blogHeading, setBlogHeading] = useState({
+    text: "Blogs",
+    subText: "",
+  });
+
+  const [blogList, setBlogList] = useState([blogData]);
 
   return (
     <Container maxWidth="xl">
-      <IntroductionComponent {...{introSectionData, setIntroSectionData}} />
+      <IntroductionComponent {...{ introSectionData, setIntroSectionData }} />
       <Container fixed spacing={2}>
         <Box
           className="section-container"
@@ -83,18 +112,75 @@ const EditPage = () => {
           }}
         >
           <Suspense>{showSection.aboutMe && <AboutMeComponent />}</Suspense>
-          <Suspense>{showSection.skillSet && <SkillSetComponent {...{skill, setSkill, techStack, setTechStack, skillSetSectionData, setSkillSetSectionData}} />}</Suspense>
-          <Suspense>{showSection.projects && <ProjectComponent {...{data, heading, setHeading, list, setList}} />}</Suspense>
           <Suspense>
-            {showSection.experience && <ExperienceComponent />}
+            {showSection.skillSet && (
+              <SkillSetComponent
+                {...{
+                  skill,
+                  setSkill,
+                  techStack,
+                  setTechStack,
+                  skillSetSectionData,
+                  setSkillSetSectionData,
+                }}
+              />
+            )}
           </Suspense>
-          <Suspense>{showSection.blog && <BlogComponent />}</Suspense>
+          <Suspense>
+            {showSection.projects && (
+              <ProjectComponent
+                {...{ data, heading, setHeading, list, setList }}
+              />
+            )}
+          </Suspense>
+          <Suspense>
+            {showSection.experience && (
+              <ExperienceComponent
+                {...{
+                  companyData,
+                  companyHeading,
+                  setCompanyHeading,
+                  companyList,
+                  setCompanyList,
+                }}
+              />
+            )}
+          </Suspense>
+          <Suspense>
+            {showSection.blog && (
+              <BlogComponent
+                {...{
+                  blogData,
+                  blogHeading,
+                  setBlogHeading,
+                  blogList,
+                  setBlogList,
+                }}
+              />
+            )}
+          </Suspense>
           <Suspense>{showSection.cta && <CTAComponent />}</Suspense>
         </Box>
         <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
           <MenuPopUpButton />
         </MenuPopUpContext.Provider>
-        <ModalBox {...{introSectionData, skill, techStack, skillSetSectionData, data, heading, list}} />
+        <ModalBox
+          {...{
+            introSectionData,
+            skill,
+            techStack,
+            skillSetSectionData,
+            data,
+            heading,
+            list,
+            companyData,
+            companyHeading,
+            companyList,
+            blogData,
+            blogHeading,
+            blogList
+          }}
+        />
       </Container>
     </Container>
   );

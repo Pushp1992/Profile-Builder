@@ -9,10 +9,27 @@ const AboutMeComponent = React.lazy(() => import("../../Components/Section/About
 const IntroductionComponent = React.lazy(() => import("../../Components/Section/Intro/IntroductionComponent"));
 const SkillSetComponent =  React.lazy(() => import("../../Components/Section/SkillSet/SkillSetComponent"));
 const ProjectComponent =  React.lazy(() => import("../../Components/Section/Project/ProjectComponent"));
+const ExperienceComponent =  React.lazy(() => import("../../Components/Section/Experience/ExperienceComponent"));
+const BlogComponent =  React.lazy(() => import("../../Components/Section/Blog/BlogComponent"));
+
 
 import "./style.css";
 
-const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData, data, heading, list }) => {
+const ModalBox = ({
+  introSectionData,
+  skill,
+  techStack,
+  skillSetSectionData,
+  data,
+  heading,
+  list,
+  companyData,
+  companyHeading,
+  companyList,
+  blogData,
+  blogHeading,
+  blogList
+}) => {
   const [lgShow, setLgShow] = useState(false);
 
   return (
@@ -38,13 +55,23 @@ const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData, dat
             <Container fixed spacing={2}>
               <Box className="section-container">
                 <Suspense>
-                    <AboutMeComponent />
+                  <AboutMeComponent />
                 </Suspense>
                 <Suspense>
-                    <SkillSetComponent {...{skill, techStack, skillSetSectionData}} />
+                  <SkillSetComponent
+                    {...{ skill, techStack, skillSetSectionData }}
+                  />
                 </Suspense>
                 <Suspense>
-                  <ProjectComponent {...{data, heading, list}} />
+                  <ProjectComponent {...{ data, heading, list }} />
+                </Suspense>
+                <Suspense>
+                  <ExperienceComponent
+                    {...{ companyData, companyHeading, companyList }}
+                  />
+                </Suspense>
+                <Suspense>
+                  <BlogComponent {...{blogData, blogHeading, blogList}} />
                 </Suspense>
               </Box>
             </Container>
@@ -56,4 +83,3 @@ const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData, dat
 };
 
 export default ModalBox;
-

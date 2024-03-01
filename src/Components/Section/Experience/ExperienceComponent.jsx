@@ -13,22 +13,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const ExperienceComponent = () => {
-  const data = {
-    logo: null,
-    companyTitle: "",
-    designation: "",
-    companyLocation: "",
-    tenure: "",
-    companyDesc: "",
-  };
-
-  const [heading, setHeading] = useState({
-    text: "Experience",
-    subText: "",
-  });
-
-  const [list, setList] = useState([data]);
+const ExperienceComponent = ({companyData, companyHeading, setCompanyHeading, companyList, setCompanyList}) => {
 
   const handleInputChange = (event, index) => {
     event.preventDefault();
@@ -37,7 +22,7 @@ const ExperienceComponent = () => {
     const { name, value } = event.target;
 
     if (name === "subText") {
-      setHeading({ ...heading, [name]: value });
+      setCompanyHeading({ ...companyHeading, [name]: value });
       return;
     }
 
@@ -45,21 +30,21 @@ const ExperienceComponent = () => {
       logoUrl = URL.createObjectURL(event.target.files[0]);
     }
 
-    const newList = [...list];
+    const newList = [...companyList];
     newList[index][name] = name !== "logo" ? value : logoUrl;
-    setList(newList);
+    setCompanyList(newList);
   };
 
   const saveCompanyData = (event) => {
     event.preventDefault();
     // Note: Final payload is coming as an object of keys instead array
-    const result = { ...heading, ...list };
+    const result = { ...companyHeading, ...companyList };
     console.log(result);
   };
 
   const addNewcard = (event) => {
     event.preventDefault();
-    setList([...list, data]);
+    setCompanyList([...companyList, companyData]);
   };
 
   return (
@@ -87,19 +72,19 @@ const ExperienceComponent = () => {
         )}
       >
         <Grid xs={12} className="child-section-head">
-          <h4>{heading.text}</h4>
+          <h4>{companyHeading.text}</h4>
           <TextArea
             className="company-subtext"
             name="subText"
             placeholder="Add subtext here..."
-            value={heading.subText}
+            value={companyHeading.subText}
             onChange={handleInputChange}
             rows="3"
             cols="auto"
           />
         </Grid>
 
-        {list.map((companyData, index) => {
+        {companyList.map((companyData, index) => {
           return (
             <div className="company-card" key={index}>
               <Grid container className="photo-title-designation">

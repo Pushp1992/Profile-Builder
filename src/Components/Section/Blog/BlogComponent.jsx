@@ -13,19 +13,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const BlogComponent = () => {
-  const data = {
-    logo: null,
-    blogTitle: "",
-    blogLink: ""
-  };
-
-  const [heading, setHeading] = useState({
-    text: "Blogs",
-    subText: "",
-  });
-
-  const [list, setList] = useState([data]);
+const BlogComponent = ({blogData, blogHeading, setBlogHeading, blogList, setBlogList}) => {
 
   const handleInputChange = (event, index) => {
     event.preventDefault();
@@ -34,7 +22,7 @@ const BlogComponent = () => {
     const { name, value } = event.target;
 
     if (name === "subText") {
-      setHeading({ ...heading, [name]: value });
+      setBlogHeading({ ...blogHeading, [name]: value });
       return;
     }
 
@@ -42,21 +30,21 @@ const BlogComponent = () => {
       logoUrl = URL.createObjectURL(event.target.files[0]);
     }
 
-    const newList = [...list];
+    const newList = [...blogList];
     newList[index][name] = name !== "logo" ? value : logoUrl;
-    setList(newList);
+    setBlogList(newList);
   };
 
   const saveBlogData = (event) => {
     event.preventDefault();
     // Note: Final payload is coming as an object of keys instead array
-    const result = { ...heading, ...list };
+    const result = { ...blogHeading, ...blogList };
     console.log(result);
   };
 
   const addNewcard = (event) => {
     event.preventDefault();
-    setList([...list, data]);
+    setBlogList([...blogList, blogData]);
   };
 
   return (
@@ -84,19 +72,19 @@ const BlogComponent = () => {
         )}
       >
         <Grid xs={12} className="child-section-head">
-          <h4>{heading.text}</h4>
+          <h4>{blogHeading.text}</h4>
           <TextArea
             className="blog-textarea"
             name="subText"
             placeholder="Add subtext here..."
-            value={heading.subText}
+            value={blogHeading.subText}
             onChange={handleInputChange}
             rows="3"
             cols="auto"
           />
         </Grid>
 
-        {list.map((blogData, index) => {
+        {blogList.map((blogData, index) => {
           return (
             <Grid xs={6} md={6} lg={6} key={index}>
               <div className="blog-card">
