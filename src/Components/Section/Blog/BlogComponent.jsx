@@ -13,8 +13,13 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const BlogComponent = ({blogData, blogHeading, setBlogHeading, blogList, setBlogList}) => {
-
+const BlogComponent = ({
+  blogData,
+  blogHeading,
+  setBlogHeading,
+  blogList,
+  setBlogList,
+}) => {
   const handleInputChange = (event, index) => {
     event.preventDefault();
 
@@ -50,7 +55,7 @@ const BlogComponent = ({blogData, blogHeading, setBlogHeading, blogList, setBlog
   return (
     <Grid container spacing={2} className="child-section-container">
       <Grid xs={12} className="child-section-actionBtn">
-      <Button variant="text" className="child-section-actionBtn--cancel">
+        <Button variant="text" className="child-section-actionBtn--cancel">
           cancel
         </Button>
         <Button
