@@ -2,7 +2,6 @@ import React, { useState, Suspense } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "react-bootstrap/Modal";
 
 const AboutMeComponent = React.lazy(() => import("../../Components/Section/AboutMe/AboutMeComponent"));

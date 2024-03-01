@@ -1,9 +1,7 @@
 import React, { useState, Suspense } from "react";
 import { MenuPopUpButton } from "../../Components/MenuPopup/MenuPopup";
-
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 
 import IntroductionComponent from "../../Components/Section/Intro/IntroductionComponent";
 const AboutMeComponent =  React.lazy(() => import("../../Components/Section/AboutMe/AboutMeComponent"));
@@ -14,7 +12,7 @@ const BlogComponent =  React.lazy(() => import("../../Components/Section/Blog/Bl
 const CTAComponent =  React.lazy(() => import("../../Components/Section/CTA/CTAComponent"));
 const ModalBox = React.lazy(() => import('../../Components/Modal-Box/Modal'));
 
-import { MenuPopUpContext, IntroductionComponentContext } from "../context";
+import { MenuPopUpContext } from "../context";
 
 import "./style.css";
 
@@ -27,6 +25,10 @@ const EditPage = () => {
     blog: false,
     cta: false,
   });
+
+  const isAllSectionDisplayed = Object.values(showSection).every(
+    (value) => value === true
+  );
 
   const [introSectionData, setIntroSectionData] = useState({
     siteTitle: "",
@@ -167,29 +169,35 @@ const EditPage = () => {
               />
             )}
           </Suspense>
-          <Suspense>{showSection.cta && <CTAComponent {...{ctaData, setCTAData}} />}</Suspense>
+          <Suspense>
+            {showSection.cta && <CTAComponent {...{ ctaData, setCTAData }} />}
+          </Suspense>
         </Box>
         <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
           <MenuPopUpButton />
         </MenuPopUpContext.Provider>
-        <ModalBox
-          {...{
-            introSectionData,
-            skill,
-            techStack,
-            skillSetSectionData,
-            data,
-            heading,
-            list,
-            companyData,
-            companyHeading,
-            companyList,
-            blogData,
-            blogHeading,
-            blogList,
-            ctaData
-          }}
-        />
+        {isAllSectionDisplayed && (
+          <Suspense>
+            <ModalBox
+              {...{
+                introSectionData,
+                skill,
+                techStack,
+                skillSetSectionData,
+                data,
+                heading,
+                list,
+                companyData,
+                companyHeading,
+                companyList,
+                blogData,
+                blogHeading,
+                blogList,
+                ctaData,
+              }}
+            />
+          </Suspense>
+        )}
       </Container>
     </Container>
   );
