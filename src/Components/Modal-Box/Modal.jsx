@@ -34,15 +34,14 @@ const ModalBox = ({
   const [lgShow, setLgShow] = useState(false);
 
   return (
-    <div>
-      <Button onClick={() => setLgShow(true)}>Preview</Button>
+    <div className="modal-box-open-btn">
+      <Button  variant="contained" color="success"  onClick={() => setLgShow(true)}>Preview</Button>
 
       <Modal
         size="xl"
         show={lgShow}
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
-        className="modal-container"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">

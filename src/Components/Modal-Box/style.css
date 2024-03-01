@@ -1,0 +1,5 @@
+.modal-box-open-btn {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 5rem;
+}
