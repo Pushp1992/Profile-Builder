@@ -11,7 +11,7 @@ const SkillSetComponent =  React.lazy(() => import("../../Components/Section/Ski
 
 import "./style.css";
 
-const ModalBox = ({ introSectionData }) => {
+const ModalBox = ({ introSectionData, skill, techStack, skillSetSectionData }) => {
   const [lgShow, setLgShow] = useState(false);
 
   return (
@@ -40,7 +40,7 @@ const ModalBox = ({ introSectionData }) => {
                     <AboutMeComponent />
                 </Suspense>
                 <Suspense>
-                    <SkillSetComponent />
+                    <SkillSetComponent {...{skill, techStack, skillSetSectionData}} />
                 </Suspense>
               </Box>
             </Container>

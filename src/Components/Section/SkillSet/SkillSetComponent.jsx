@@ -12,22 +12,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const SkillSetComponent = () => {
-  const [skill, setSkill] = useState("");
-  const [techStack, setTechStack] = useState("");
-
-  const [skillSetSectionData, setSkillSetSectionData] = useState({
-    skillSetData: {
-      title: "Skillsets",
-      skillSetDesc: "",
-      skillSetList: [],
-    },
-    techStackData: {
-      title: "Stack",
-      techStackDesc: "",
-      techStackList: [],
-    },
-  });
+const SkillSetComponent = ({skill, setSkill, techStack, setTechStack, skillSetSectionData, setSkillSetSectionData}) => {
 
   const handleInputChange = (event) => {
     event.preventDefault();
