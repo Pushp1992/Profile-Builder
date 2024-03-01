@@ -1,3 +1,7 @@
+#root {
+  background-color: whitesmoke;
+  min-height: 100vh;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +9,6 @@
 
   /* color-scheme: light dark; */
   color: black;
-  background-color: whitesmoke;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
