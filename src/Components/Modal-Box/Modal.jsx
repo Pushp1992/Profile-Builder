@@ -42,6 +42,7 @@ const ModalBox = ({
         show={lgShow}
         onHide={() => setLgShow(false)}
         aria-labelledby="example-modal-sizes-title-lg"
+        className="modal-container"
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-lg">
