@@ -11,7 +11,7 @@ const SkillSetComponent =  React.lazy(() => import("../../Components/Section/Ski
 const ProjectComponent =  React.lazy(() => import("../../Components/Section/Project/ProjectComponent"));
 const ExperienceComponent =  React.lazy(() => import("../../Components/Section/Experience/ExperienceComponent"));
 const BlogComponent =  React.lazy(() => import("../../Components/Section/Blog/BlogComponent"));
-
+const CTAComponent =  React.lazy(() => import("../../Components/Section/CTA/CTAComponent"));
 
 import "./style.css";
 
@@ -28,7 +28,8 @@ const ModalBox = ({
   companyList,
   blogData,
   blogHeading,
-  blogList
+  blogList,
+  ctaData
 }) => {
   const [lgShow, setLgShow] = useState(false);
 
@@ -72,6 +73,9 @@ const ModalBox = ({
                 </Suspense>
                 <Suspense>
                   <BlogComponent {...{blogData, blogHeading, blogList}} />
+                </Suspense>
+                <Suspense>
+                  <CTAComponent {...{ctaData}} />
                 </Suspense>
               </Box>
             </Container>

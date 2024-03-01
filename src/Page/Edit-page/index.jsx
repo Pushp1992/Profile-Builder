@@ -98,6 +98,14 @@ const EditPage = () => {
 
   const [blogList, setBlogList] = useState([blogData]);
 
+  // CTA Section data
+  const [ctaData, setCTAData] = useState({
+    text: "Lets Connect!",
+    subText: "",
+    logo: null,
+    blogURL: "",
+  });
+
   return (
     <Container maxWidth="xl">
       <IntroductionComponent {...{ introSectionData, setIntroSectionData }} />
@@ -159,7 +167,7 @@ const EditPage = () => {
               />
             )}
           </Suspense>
-          <Suspense>{showSection.cta && <CTAComponent />}</Suspense>
+          <Suspense>{showSection.cta && <CTAComponent {...{ctaData, setCTAData}} />}</Suspense>
         </Box>
         <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
           <MenuPopUpButton />
@@ -178,7 +186,8 @@ const EditPage = () => {
             companyList,
             blogData,
             blogHeading,
-            blogList
+            blogList,
+            ctaData
           }}
         />
       </Container>

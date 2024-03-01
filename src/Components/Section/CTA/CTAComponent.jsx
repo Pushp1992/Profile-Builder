@@ -11,13 +11,7 @@ import classNames from "classnames";
 
 import "./style.css";
 
-const CTAComponent = () => {
-  const [ctaData, setCTAData] = useState({
-    text: "Lets Connect!",
-    subText: "",
-    logo: null,
-    blogURL: "",
-  });
+const CTAComponent = ({ctaData, setCTAData}) => {
 
   const handleInputChange = (event) => {
     event.preventDefault();
