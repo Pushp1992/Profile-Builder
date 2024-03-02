@@ -55,27 +55,27 @@ export function MenuPopUpButton() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem name="aboutMe" onClick={handleClose} disableRipple>
+        <MenuItem name="aboutMe" disabled={showSection.aboutMe} onClick={handleClose} disableRipple>
           <FaceIcon  />
           Add About You
         </MenuItem>
-        <MenuItem name="skillSet" onClick={handleClose} disableRipple>
+        <MenuItem name="skillSet" disabled={showSection.skillSet} onClick={handleClose} disableRipple>
           <MilitaryTechIcon />
           Add Skillsets
         </MenuItem>
-        <MenuItem name="projects" onClick={handleClose} disableRipple>
+        <MenuItem name="projects" disabled={showSection.projects} onClick={handleClose} disableRipple>
           <HubIcon />
           Add Projects
         </MenuItem>
-        <MenuItem name="experience" onClick={handleClose} disableRipple>
+        <MenuItem name="experience" disabled={showSection.experience} onClick={handleClose} disableRipple>
           <SchoolIcon />
           Add Experience
         </MenuItem>
-        <MenuItem name="blog" onClick={handleClose} disableRipple>
+        <MenuItem name="blog" disabled={showSection.blog} onClick={handleClose} disableRipple>
           <RssFeedIcon />
           Add Blog
         </MenuItem>
-        <MenuItem name="cta" onClick={handleClose} disableRipple>
+        <MenuItem name="cta" disabled={showSection.cta} onClick={handleClose} disableRipple>
           <DashboardIcon />
           Add CTA
         </MenuItem>
