@@ -55,8 +55,8 @@ const editorConfig = {
   ],
 };
 
-const RichTextEditor = () => {
-  const [editorState, setEditorState] = useState();
+const RichTextEditor = ({editorState, setEditorState}) => {
+  // const [editorState, setEditorState] = useState();
 
   const MyOnChangePlugin = ({ onChange }) => {
     const [editor] = useLexicalComposerContext();
@@ -86,6 +86,7 @@ const RichTextEditor = () => {
               contentEditable={<ContentEditable className="editor-input" />}
               placeholder={<Placeholder className="placeholder" />}
               ErrorBoundary={LexicalErrorBoundary}
+             
             />
             <HistoryPlugin />
             <AutoFocusPlugin />
@@ -97,7 +98,7 @@ const RichTextEditor = () => {
             <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
           </div>
         </div>
-        <MyOnChangePlugin onChange={onChange} />
+        <MyOnChangePlugin value={editorState} onChange={onChange} />
       </LexicalComposer>
     </Grid>
   );

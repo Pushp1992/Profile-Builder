@@ -46,7 +46,8 @@ const ModalBox = ({
   blogData,
   blogHeading,
   blogList,
-  ctaData
+  ctaData,
+  editorState
 }) => {
   const [lgShow, setLgShow] = useState(false);
 
@@ -72,9 +73,9 @@ const ModalBox = ({
             </Suspense>
             <Container fixed spacing={2}>
               <Box className="section-container">
-                <Suspense>
-                  <AboutMeComponent />
-                </Suspense>
+                {/* <Suspense>
+                  <AboutMeComponent {...{editorState}} />
+                </Suspense> */}
                 <Suspense>
                   <SkillSetComponent
                     {...{ skill, techStack, skillSetSectionData }}

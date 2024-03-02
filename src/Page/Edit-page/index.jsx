@@ -18,6 +18,9 @@ import "./style.css";
 
 const EditPage = () => {
 
+  // About me section
+  const [editorState, setEditorState] = useState();
+
   // Introduction Section Data
   const [showSection, setShowSection] = useState({
     aboutMe: false,
@@ -125,7 +128,7 @@ const EditPage = () => {
             alignItems: "flex-start",
           }}
         >
-          <Suspense>{showSection.aboutMe && <AboutMeComponent />}</Suspense>
+          <Suspense>{showSection.aboutMe && <AboutMeComponent {...{editorState, setEditorState}} />}</Suspense>
           <Suspense>
             {showSection.skillSet && (
               <SkillSetComponent
@@ -198,6 +201,7 @@ const EditPage = () => {
                 blogHeading,
                 blogList,
                 ctaData,
+                editorState
               }}
             />
           </Suspense>

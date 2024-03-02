@@ -9,7 +9,7 @@ import RichTextEditor from '../../RichTextEditor/editor';
 
 import "./style.css";
 
-const AboutMeComponent = () => {
+const AboutMeComponent = ({editorState, setEditorState}) => {
   return (
     <Grid container spacing={2} className="child-section-container">
       <Grid xs={12} className="child-section-actionBtn">
@@ -21,7 +21,7 @@ const AboutMeComponent = () => {
           <h3>About Me</h3>
         </Grid>
         <Grid xs={12} sm={12} md={12} className="editorWrapper">
-          <RichTextEditor />
+          <RichTextEditor {...{editorState, setEditorState}} />
         </Grid>
       </div>
     </Grid>
