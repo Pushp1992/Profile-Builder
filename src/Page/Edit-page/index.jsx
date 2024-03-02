@@ -180,9 +180,12 @@ const EditPage = () => {
             {showSection.cta && <CTAComponent {...{ ctaData, setCTAData }} />}
           </Suspense>
         </Box>
-        <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
-          <MenuPopUpButton />
-        </MenuPopUpContext.Provider>
+        {!isAllSectionDisplayed && ( 
+          <MenuPopUpContext.Provider value={{ showSection, setShowSection }}>
+            <MenuPopUpButton />
+          </MenuPopUpContext.Provider>
+        )}
+
         {isAllSectionDisplayed && (
           <Suspense>
             <ModalBox
