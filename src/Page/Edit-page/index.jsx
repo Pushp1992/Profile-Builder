@@ -17,6 +17,8 @@ import { MenuPopUpContext } from "../context";
 import "./style.css";
 
 const EditPage = () => {
+
+  // Introduction Section Data
   const [showSection, setShowSection] = useState({
     aboutMe: false,
     skillSet: false,
@@ -39,6 +41,7 @@ const EditPage = () => {
     profileEmail: "",
   });
 
+  // Skillset section Data
   const [skill, setSkill] = useState("");
   const [techStack, setTechStack] = useState("");
 
@@ -55,6 +58,7 @@ const EditPage = () => {
     },
   });
 
+  // Project Section Data
   const data = {
     logo: null,
     projectTitle: "",
@@ -66,7 +70,7 @@ const EditPage = () => {
     text: "Projects",
     subText: "",
   });
-
+  
   const [list, setList] = useState([data]);
 
   // Experience section data

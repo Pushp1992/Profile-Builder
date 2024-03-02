@@ -14,6 +14,24 @@ const CTAComponent =  React.lazy(() => import("../../Components/Section/CTA/CTAC
 
 import "./style.css";
 
+/**
+ * 
+ * @param {Object} introSectionData - Profile section intor data
+ * @param {Object} skill - Skillset section skill data
+ * @param {Object} techStack - Skillset section tech stack data
+ * @param {Object} skillSetSectionData - Skill set section data
+ * @param {Object} data - Project section data
+ * @param {string} heading - Project section heading
+ * @param {Object} companyData - Project section company data
+ * @param {String} companyHeading - project section heading
+ * @param {Array} companyList - Experience Section company list
+ * @param {Object} blogData - Blog section data
+ * @param {Object} blogHeading - Blog section heading
+ * @param {Array} blogList - Blog section list
+ * @param {Object} ctaData - Cta section data
+ * 
+ * @returns {HTMLElement} div
+ */
 const ModalBox = ({
   introSectionData,
   skill,

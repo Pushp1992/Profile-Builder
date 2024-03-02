@@ -1,6 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * TextField Component
+ * 
+ * @param {string} name - Input field name
+ * @param {string} id - Input field id
+ * @param {string} value - Input field value
+ * @param {Function} onChange - Input field change function
+ * @param {string} placeholder - [Input field placeholder]
+ * @param {Object} className -  Input field classname
+ * @returns {HTMLElement} <input />
+ */
 export const TextField = ({
   name,
   id,

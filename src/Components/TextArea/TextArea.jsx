@@ -1,6 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/**
+ * TextArea Component
+ * 
+ * @param {string} name - TextArea name
+ * @param {string} id - TextArea id
+ * @param {string} value - TextArea value
+ * @param {string} rows - TextArea rows count
+ * @param {string} cols - TextArea cols count
+ * @param {function} onChange -  TextArea onChange function
+ * @param {string} placeholder - [TextArea Placeholder]
+ * @param {string} className - TextArea class
+ * 
+ * @returns {HTMLElement} <textarea />
+ */
 export const TextArea = ({
   name,
   id,

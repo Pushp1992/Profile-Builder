@@ -12,6 +12,18 @@ import classNames from "classnames";
 
 import "./style.css";
 
+/**
+ * SkillSetComponent
+ * 
+ * @param {Object} skill - Skillset object
+ * @param {Object} setSkill - Function to set skill object
+ * @param {Object} techStack - Skill set tech stack
+ * @param {Object} setTechStack - Function to set tech stack data
+ * @param {Object} skillSetSectionData - Skill set data
+ * @param {Object} setSkillSetSectionData -  Function to set final skil set data
+ * 
+ * @returns {HTMLElement}
+ */
 const SkillSetComponent = ({skill, setSkill, techStack, setTechStack, skillSetSectionData, setSkillSetSectionData}) => {
 
   const handleInputChange = (event) => {

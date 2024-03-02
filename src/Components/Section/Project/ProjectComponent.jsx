@@ -12,6 +12,17 @@ import classNames from "classnames";
 
 import "./style.css";
 
+/**
+ * ProjectComponent
+ * 
+ * @param {Object} data -  Project data
+ * @param {String} heading -  Project heading
+ * @param {Function} setHeading - Functiob to bind project heading
+ * @param {Array} list -  Project list
+ * @param {Function} setList -  Function to bind all project list
+ * 
+ * @returns {HTMLElement} <div />
+ */
 const ProjectComponent = ({data, heading, setHeading, list, setList}) => {
 
   const handleInputChange = (event, index) => {

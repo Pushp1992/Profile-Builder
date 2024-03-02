@@ -19,6 +19,13 @@ const styles = {
   justifyContent: 'left',
 };
 
+/**
+ * ImageUploadButton
+ * 
+ * @param {Function} onChange - Function to trigger when image is uploaded
+ * @param {object} className  - Classname gven to input btn
+ * @returns {HTMLElement} <Button />
+ */
 export const ImageUploadButton = ({ onChange, className }) => {
   return (
     <Button

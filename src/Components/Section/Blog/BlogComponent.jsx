@@ -13,6 +13,16 @@ import classNames from "classnames";
 
 import "./style.css";
 
+/**
+ * BlogComponent
+ * 
+ * @param {Object} blogData - blog data
+ * @param {String} blogHeading - blog heading
+ * @param {Function} setBlogHeading - bind blog heading
+ * @param {Function} setBlogList - bind blog data
+ * 
+ * @returns {HTMLElement} <Grid /> will all data
+ */
 const BlogComponent = ({
   blogData,
   blogHeading,

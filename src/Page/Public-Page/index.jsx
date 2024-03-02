@@ -8,7 +8,7 @@ const PublicPage = () => {
     const showSection = useContext(MenuPopUpContext);
     console.log('showSection', showSection);
     return(
-        <h3>Public view Page</h3>
+        <h3>Public view Page for future usability for Routing</h3>
     )
 };
 

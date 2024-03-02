@@ -13,6 +13,16 @@ import classNames from "classnames";
 
 import "./style.css";
 
+/**
+ * ExperienceComponent
+ * 
+ * @param {Object} companyData - company data to display
+ * @param {String} companyHeading - heading
+ * @param {Function} setCompanyHeading - Functionb to bind company heading
+ * @param {Array} companyList - List of company user worked with
+ * @param {Function} setCompanyList - Function to bind all company togeather
+ * @returns {HTMLElement}
+ */
 const ExperienceComponent = ({companyData, companyHeading, setCompanyHeading, companyList, setCompanyList}) => {
 
   const handleInputChange = (event, index) => {

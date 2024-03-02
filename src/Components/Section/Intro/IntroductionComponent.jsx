@@ -4,6 +4,13 @@ import { TextArea } from "../../TextArea/TextArea";
 
 import "./style.css";
 
+/**
+ * IntroductionComponent
+ * 
+ * @param {Object} introSectionData -  Intro section information
+ * @param {Function} setIntroSectionData - Bind all intro section data togeather
+ * @returns {HTMLElement}
+ */
 const IntroductionComponent = ({introSectionData, setIntroSectionData}) => {
 
   const handleInputChange = (event) => {

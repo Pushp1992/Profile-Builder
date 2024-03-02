@@ -11,6 +11,12 @@ import classNames from "classnames";
 
 import "./style.css";
 
+/**
+ * 
+ * @param {Object} ctaData - Object data for consuming 
+ *  @param {function} setCTAData - bind object data 
+ * @returns {HTMLElement} 
+ */
 const CTAComponent = ({ctaData, setCTAData}) => {
 
   const handleInputChange = (event) => {
